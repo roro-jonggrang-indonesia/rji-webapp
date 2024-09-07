@@ -1,7 +1,3 @@
-"use client";
-
-import { fadeVariants } from "@/lib/variants";
-import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 interface ContactUsHeadersProps {
@@ -10,14 +6,7 @@ interface ContactUsHeadersProps {
 
 export default function ContactUsHeaders({ data }: ContactUsHeadersProps) {
   return (
-    <motion.div
-      variants={fadeVariants}
-      initial="initial"
-      whileInView="whileInView"
-      viewport={{ once: true }}
-      transition={{ duration: 2, ease: "easeInOut" }}
-      className="mx-auto w-full space-y-5 text-center sm:text-start"
-    >
+    <div className="mx-auto w-full space-y-5 text-center sm:text-start">
       <h1 className="font-semibold">HUBUNGI KAMI</h1>
       <h3 className="text-3xl font-bold">
         Wujudkan Konsep Acara Terbaik Anda Sekarang!
@@ -35,6 +24,6 @@ export default function ContactUsHeaders({ data }: ContactUsHeadersProps) {
       <p className="flex items-center justify-center gap-2 sm:justify-start">
         <MapPin className="size-4" /> 789 Mcallister St San Fransisco 94102
       </p>
-    </motion.div>
+    </div>
   );
 }

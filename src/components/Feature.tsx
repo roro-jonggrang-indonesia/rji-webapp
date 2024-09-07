@@ -45,7 +45,7 @@ export default function Feature({ reverse = false }: FeatureProps) {
               alt=""
               width={1000}
               height={1000}
-              className="aspect-video w-full rounded-2xl object-cover"
+              className="aspect-[1.77/1] w-full rounded-2xl object-cover"
             />
           </div>
         </motion.div>

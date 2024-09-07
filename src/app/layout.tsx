@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { DM_Sans } from "next/font/google";
 import WhatsappButton from "@/components/WhatsappButton";
+import ContactUs from "@/sections/ContactUs";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={`${dmSans.className} relative bg-white`}>
         <Navbar />
         {children}
+        <ContactUs />
         <Footer />
         <WhatsappButton />
       </body>

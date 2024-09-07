@@ -27,8 +27,7 @@ export default function Testimony({
           <Image
             src={woman}
             alt=""
-            width={500}
-            height={500}
+            sizes="100vw"
             className="-m-10 mx-auto size-96 w-full object-cover"
           />
         </CardHeader>

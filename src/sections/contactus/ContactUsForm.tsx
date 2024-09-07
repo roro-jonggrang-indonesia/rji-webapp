@@ -21,14 +21,7 @@ export default function ContactUsForm() {
   const form = useForm();
 
   return (
-    <motion.div
-      variants={reverseFeatureVariants}
-      initial="initial"
-      whileInView="whileInView"
-      viewport={{ once: true }}
-      transition={{ duration: 1, ease: "easeInOut" }}
-      className="w-full"
-    >
+    <div className="w-full">
       <Card className="w-full rounded-2xl border-none bg-black/5">
         <CardContent className="space-y-5 py-4">
           <Form {...form}>
@@ -108,6 +101,6 @@ export default function ContactUsForm() {
           </Button>
         </CardFooter>
       </Card>
-    </motion.div>
+    </div>
   );
 }

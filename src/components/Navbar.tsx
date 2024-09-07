@@ -55,7 +55,7 @@ export default function Navbar({ className }: { className?: string }) {
           duration: 0.5,
         }}
         className={cn(
-          "fixed top-0 z-10 h-[84px] w-full text-white transition-colors duration-500 ease-in-out lg:min-w-fit",
+          "fixed top-0 z-10 h-[84px] w-full text-black transition-colors duration-500 ease-in-out lg:min-w-fit",
           {
             "bg-transparent": isAtTop && !showNavbar,
             "bg-[#0D1846] text-white": (!isAtTop && visible) || showNavbar,
@@ -65,13 +65,24 @@ export default function Navbar({ className }: { className?: string }) {
       >
         <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6 md:px-16">
           <div className="flex items-center gap-5">
-            <Image
-              src={logoWhite}
-              alt=""
-              width={100}
-              height={100}
-              className="size-10"
-            />
+            {(!isAtTop && visible) || showNavbar ? (
+              <Image
+                src={logoWhite}
+                alt=""
+                width={100}
+                height={100}
+                className="size-10"
+              />
+            ) : (
+              <Image
+                src={logo}
+                alt=""
+                width={100}
+                height={100}
+                className="size-10"
+              />
+            )}
+
             <p className="hidden md:block">Roro Jonggrang Indonesia</p>
             <p className="md:hidden">RJI</p>
           </div>
