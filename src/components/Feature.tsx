@@ -9,6 +9,12 @@ import avatar from "@/assets/Avatar.png";
 import Image from "next/image";
 import { Lexend } from "next/font/google";
 import { CircleArrowRight } from "lucide-react";
+import {
+  fadeVariants,
+  featureVariants,
+  reverseFeatureVariants,
+  upVariants,
+} from "@/lib/variants";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -26,10 +32,11 @@ export default function Feature({ reverse = false }: FeatureProps) {
         )}
       >
         <motion.div
-          initial={reverse ? { opacity: 0, x: -75 } : { opacity: 0, x: 75 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          variants={reverse ? reverseFeatureVariants : featureVariants}
+          initial="initial"
+          whileInView="whileInView"
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeIn" }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="space-y-2 sm:w-1/2"
         >
           <div className="relative overflow-hidden rounded-2xl">
@@ -45,7 +52,14 @@ export default function Feature({ reverse = false }: FeatureProps) {
         <div className="flex flex-col justify-between space-y-1.5 sm:w-1/2">
           {/* LABEL */}
           <div className="flex flex-col space-y-3">
-            <div className="flex justify-center gap-2 sm:justify-start">
+            <motion.div
+              variants={upVariants}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="flex justify-center gap-2 sm:justify-start"
+            >
               <Button
                 disabled
                 size="sm"
@@ -67,22 +81,24 @@ export default function Feature({ reverse = false }: FeatureProps) {
               >
                 Offline
               </Button>
-            </div>
+            </motion.div>
             <motion.h2
-              initial={{ opacity: 0, y: 75 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={upVariants}
+              initial="initial"
+              whileInView="whileInView"
               viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: "easeIn" }}
-              className={`text-4xl font-bold ${lexend.className}`}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className={`text-3xl font-bold ${lexend.className}`}
             >
               Roro Jonggrang Marathon 2023
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 75 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={upVariants}
+              initial="initial"
+              whileInView="whileInView"
               viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: "easeIn" }}
-              className="line-clamp-4 tracking-wider text-[#0D1846] md:line-clamp-5 md:text-xl"
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="line-clamp-3 text-[#0D1846] sm:line-clamp-4 sm:text-lg"
             >
               Join thousands of athletes from across the globe in one of
               Indonesia&apos;s most prestigious marathon events. With categories
@@ -94,23 +110,47 @@ export default function Feature({ reverse = false }: FeatureProps) {
           <div className="flex items-end justify-end">
             <div className="flex flex-grow flex-col space-y-2.5">
               <motion.h3
-                initial={{ opacity: 0, y: 75 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                variants={upVariants}
+                initial="initial"
+                whileInView="whileInView"
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: "easeIn" }}
+                transition={{ duration: 1.8, ease: "easeInOut" }}
                 className="text-xl font-semibold"
               >
                 Kementerian ABCD
               </motion.h3>
-              <p>Jakarta, Malang, Surabaya</p>
-              <p>December 2020</p>
+              <motion.p
+                variants={upVariants}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                transition={{ duration: 1.9, ease: "easeInOut" }}
+              >
+                Jakarta, Malang, Surabaya
+              </motion.p>
+              <motion.p
+                variants={upVariants}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+              >
+                December 2020
+              </motion.p>
             </div>
-            <div className="flex h-full items-end justify-end">
+            <motion.div
+              variants={fadeVariants}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+              className="flex h-full items-end justify-end"
+            >
               <Button className="rounded-xl border border-[#0D1846] bg-transparent text-[#0D1846] hover:bg-[#0D1846] hover:text-white">
                 Selengkapnya
                 <CircleArrowRight className="ml-3 size-5" />
               </Button>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

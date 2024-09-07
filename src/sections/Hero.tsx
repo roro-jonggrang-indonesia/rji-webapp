@@ -15,9 +15,9 @@ export default async function Hero() {
   return (
     <BackgroundVideo
       src={video}
-      className="relative h-screen object-fill sm:object-cover"
+      className="relative h-screen object-fill md:object-cover"
     >
-      <div className="absolute inset-0 flex flex-col items-center justify-center space-y-5 px-6 text-center sm:items-start sm:px-16 sm:text-start">
+      <div className="absolute inset-0 mx-auto flex max-w-[1440px] flex-col items-center justify-center space-y-5 px-6 text-center md:items-start md:px-16 md:text-start">
         <h1
           className={`max-w-72 text-4xl tracking-wider ${lexend.className} font-semibold text-[#C0AF65]`}
         >

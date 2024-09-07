@@ -1,12 +1,14 @@
 import Image from "next/image";
 import logo from "@/assets/rji-logo-white.png";
+import { Instagram, Youtube } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto bg-[#0D1846] px-6 py-16 text-white sm:px-16">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-10 space-y-5 sm:grid-cols-4 sm:space-y-0">
-        <div className="col-span-2 mx-auto space-y-5 text-center sm:col-span-1 sm:text-start">
-          <div className="flex items-center justify-center gap-x-5 sm:justify-start">
+    <footer className="mx-auto bg-[#0D1846] pb-5 pt-16 text-white">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-x-10 space-y-5 px-6 sm:grid-cols-4 sm:space-y-0 sm:px-16">
+        <div className="col-span-2 mx-auto space-y-5 sm:col-span-1 sm:text-start">
+          <div className="flex items-center gap-3">
             <Image
               src={logo}
               alt=""
@@ -14,11 +16,25 @@ export default function Footer() {
               height={100}
               className="size-10"
             />
-            <p className="text-2xl">LOGO</p>
+            <p className="text-xl">Roro Jonggrang Indonesia</p>
           </div>
           <p className="text-muted-foreground">
             Event Organizer (EO) Sport terbaik dan profesional di Jakarta
           </p>
+          <div className="flex gap-2">
+            <Link
+              href={"https://www.instagram.com/rorojonggrangsporteo/"}
+              className="flex size-7 items-center justify-center rounded-xl border border-white"
+            >
+              <Instagram className="size-4" />
+            </Link>
+            <Link
+              href={"https://www.youtube.com/@rorojonggrangindonesiaspor8098"}
+              className="flex size-7 items-center justify-center rounded-xl border border-white"
+            >
+              <Youtube className="size-4" />
+            </Link>
+          </div>
         </div>
 
         <div className="col-span-1 space-y-3 sm:mx-auto">
@@ -61,10 +77,10 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="space-y-3 py-5">
+      <div className="mx-auto max-w-[1440px] space-y-3 px-6 py-5 sm:px-16">
         <hr />
         <p className="text-center text-sm text-muted-foreground">
-          Copyright {new Date().getFullYear()} Roro Jonggrang Indonesia
+          Copyright &copy; {new Date().getFullYear()} Roro Jonggrang Indonesia
         </p>
       </div>
     </footer>

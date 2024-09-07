@@ -55,7 +55,7 @@ export default function Navbar({ className }: { className?: string }) {
           duration: 0.5,
         }}
         className={cn(
-          "fixed top-0 z-10 flex h-[84px] w-full items-center justify-between px-6 text-white transition-colors duration-500 ease-in-out md:px-16 lg:min-w-fit",
+          "fixed top-0 z-10 h-[84px] w-full text-white transition-colors duration-500 ease-in-out lg:min-w-fit",
           {
             "bg-transparent": isAtTop && !showNavbar,
             "bg-[#0D1846] text-white": (!isAtTop && visible) || showNavbar,
@@ -63,40 +63,42 @@ export default function Navbar({ className }: { className?: string }) {
           className,
         )}
       >
-        <div className="flex items-center gap-5">
-          <Image
-            src={logoWhite}
-            alt=""
-            width={100}
-            height={100}
-            className="size-10"
-          />
-          <p className="hidden md:block">Roro Jonggrang Indonesia</p>
-          <p className="md:hidden">RJI</p>
-        </div>
-        <Button
-          variant="ghost"
-          className="md:hidden"
-          onClick={() => setShowNavbar(!showNavbar)}
-        >
-          <div className="relative h-10 w-10">
-            <X
-              className={`absolute left-0 top-0 h-10 w-10 transform transition-transform duration-500 ease-in-out ${
-                showNavbar ? "rotate-0 opacity-100" : "rotate-180 opacity-0"
-              }`}
+        <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6 md:px-16">
+          <div className="flex items-center gap-5">
+            <Image
+              src={logoWhite}
+              alt=""
+              width={100}
+              height={100}
+              className="size-10"
             />
-            <Equal
-              className={`absolute left-0 top-0 h-10 w-10 transform transition-transform duration-500 ease-in-out ${
-                showNavbar ? "rotate-180 opacity-0" : "rotate-0 opacity-100"
-              }`}
-            />
+            <p className="hidden md:block">Roro Jonggrang Indonesia</p>
+            <p className="md:hidden">RJI</p>
           </div>
-        </Button>
-        <ul className="hidden gap-6 md:flex">
-          {navItems.map((item, i) => (
-            <NavItem key={i} item={item} />
-          ))}
-        </ul>
+          <Button
+            variant="ghost"
+            className="md:hidden"
+            onClick={() => setShowNavbar(!showNavbar)}
+          >
+            <div className="relative h-10 w-10">
+              <X
+                className={`absolute left-0 top-0 h-10 w-10 transform transition-transform duration-500 ease-in-out ${
+                  showNavbar ? "rotate-0 opacity-100" : "rotate-180 opacity-0"
+                }`}
+              />
+              <Equal
+                className={`absolute left-0 top-0 h-10 w-10 transform transition-transform duration-500 ease-in-out ${
+                  showNavbar ? "rotate-180 opacity-0" : "rotate-0 opacity-100"
+                }`}
+              />
+            </div>
+          </Button>
+          <ul className="hidden gap-6 md:flex">
+            {navItems.map((item, i) => (
+              <NavItem key={i} item={item} />
+            ))}
+          </ul>
+        </div>
       </motion.div>
       {showNavbar && (
         <motion.div
