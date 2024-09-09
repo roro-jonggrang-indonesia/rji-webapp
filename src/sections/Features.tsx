@@ -43,7 +43,7 @@ export default async function Features() {
         asChild
         className="w-full rounded-xl border border-[#0D1846] bg-[#0D1846] text-center text-white hover:bg-transparent hover:text-[#0D1846]"
       >
-        <Link href={"/portfolio"} className="w-full underline">
+        <Link href={"/portofolio"} className="w-full underline">
           See More
         </Link>
       </Button>

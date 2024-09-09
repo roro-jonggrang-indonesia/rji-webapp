@@ -13,6 +13,7 @@ export default async function Testimonials() {
   const response2 = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/testimonials?populate=*`,
   );
+
   const { data: testimonials } = await response2.json();
   return (
     <section className="bg-white py-10 text-[#0D1846]">

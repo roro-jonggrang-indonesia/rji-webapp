@@ -55,7 +55,7 @@ export default function Navbar({ className }: { className?: string }) {
           duration: 0.5,
         }}
         className={cn(
-          "fixed top-0 z-10 h-[84px] w-full text-black transition-colors duration-500 ease-in-out lg:min-w-fit",
+          "fixed top-0 z-50 h-[84px] w-full text-black transition-colors duration-500 ease-in-out lg:min-w-fit",
           {
             "bg-transparent": isAtTop && !showNavbar,
             "bg-[#0D1846] text-white": (!isAtTop && visible) || showNavbar,

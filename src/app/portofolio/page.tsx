@@ -26,9 +26,9 @@ export default async function Page() {
   const filterData = data.reverse();
   return (
     <main className="mx-auto w-full max-w-[1440px] px-6 pb-10 text-[#0D1846] sm:px-16">
-      <div className="min-h-[650px] w-full items-center justify-center space-y-5 py-10 sm:flex">
-        <div className="max-w-2xl space-y-4 text-center sm:w-1/2 sm:text-start">
-          <h1 className={`${lexend.className} text-xl font-bold sm:text-6xl`}>
+      <div className="min-h-[650px] w-full items-center justify-center space-y-5 py-10 sm:flex sm:justify-between">
+        <div className="max-w-2xl space-y-10 pt-16 text-center sm:w-1/2 sm:pt-0 sm:text-start">
+          <h1 className={`${lexend.className} text-4xl font-bold sm:text-6xl`}>
             Discover Our Works!
           </h1>
           <p className="max-w-md">
