@@ -18,7 +18,7 @@ export default function BlogsHeaders({ data }: BlogsHeadersProps) {
         transition={{ duration: 1, ease: "easeInOut" }}
         className="text-3xl font-semibold"
       >
-        Artikel Terbaru
+        {data.attributes.title}
       </motion.h2>
       <motion.p
         variants={upVariants}
@@ -28,8 +28,7 @@ export default function BlogsHeaders({ data }: BlogsHeadersProps) {
         transition={{ duration: 1, ease: "easeInOut" }}
         className="mx-auto max-w-3xl font-light"
       >
-        Dapatkan berita terbaru dan informasi menarik tentang Roro Jonggrang
-        Indonesia (RJI) EO seputar manajemen acara, tips & trik, dan sebagainya.
+        {data.attributes.description}
       </motion.p>
     </>
   );

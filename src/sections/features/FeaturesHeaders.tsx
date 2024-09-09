@@ -7,11 +7,7 @@ import { Lexend } from "next/font/google";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
-interface FeaturesHeadersProps {
-  data: any;
-}
-
-export default function FeaturesHeaders({ data }: FeaturesHeadersProps) {
+export default function FeaturesHeaders() {
   return (
     <motion.h2
       variants={fadeVariants}

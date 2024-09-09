@@ -15,26 +15,49 @@ export default async function Facts() {
         <div className="grid w-full grid-cols-1 gap-px bg-white md:grid-cols-2">
           <div className="mx-auto flex w-full flex-col bg-[#0D1846] py-8 text-center sm:-ms-px sm:-mt-px sm:me-px">
             <h3 className="text-4xl font-bold text-primary">
-              <AnimatedCounter from={0} to={100} duration={3} />+
+              <AnimatedCounter
+                from={0}
+                to={parseInt(data.attributes.tahun_pengalaman)}
+                duration={3}
+              />
+              +
             </h3>
-            <p>Clients and Partner</p>
+
+            <p>Tahun Berpengalaman</p>
           </div>
           <div className="mx-auto flex w-full flex-col bg-[#0D1846] py-8 text-center sm:-me-px sm:-mt-px">
             <h3 className="text-4xl font-bold text-primary">
-              <AnimatedCounter from={0} to={200} duration={5} />+
+              <AnimatedCounter
+                from={0}
+                to={parseInt(data.attributes.klien_dan_partner)}
+                duration={3}
+              />
+              +
             </h3>
-            <p>Events Manage Successfully</p>
+            <p>Klien Percaya</p>
           </div>
           <div className="mx-auto flex w-full flex-col bg-[#0D1846] py-8 text-center sm:-mb-px sm:-ms-px">
             <h3 className="text-4xl font-bold text-primary">
-              <AnimatedCounter from={0} to={10} duration={3} />+
+              <AnimatedCounter
+                from={0}
+                to={parseInt(data.attributes.total_acara)}
+                duration={5}
+              />
+              +
             </h3>
-            <p>Years of experience</p>
+            <p>Event Terselenggara</p>
           </div>
 
           <div className="mx-auto flex w-full flex-col bg-[#0D1846] py-8 text-center sm:-mb-px sm:-me-px">
-            <h3 className="text-4xl font-bold text-primary">UNLIMITED</h3>
-            <p>Clients Smiles Delivered</p>
+            <h3 className="text-4xl font-bold text-primary">
+              <AnimatedCounter
+                from={0}
+                to={parseInt(data.attributes.layanan_tersedia)}
+                duration={3}
+              />
+              +
+            </h3>
+            <p>Provinsi Dikunjungi</p>
           </div>
         </div>
       </div>

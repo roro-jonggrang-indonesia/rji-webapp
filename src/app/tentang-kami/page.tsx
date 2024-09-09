@@ -143,7 +143,7 @@ function CommitmentSection() {
       <h2 className={`${lexend.className} text-center text-2xl font-semibold`}>
         Our Commitment to the World of Sports
       </h2>
-      <div className="gap-10 overflow-hidden rounded-2xl bg-[#F5F7FA] shadow-2xl sm:flex">
+      <div className="gap-10 overflow-hidden rounded-2xl bg-[#F5F7FA] shadow-md sm:flex">
         <Image
           src={image}
           alt=""
@@ -163,7 +163,7 @@ function CommitmentSection() {
             inspiration for future generations. Our team is dedicated to
             delivering excellence at every stage of your event, from planning to
             execution. Thank you for trusting us to create unforgettable sports
-            experiences. Together, let's make extraordinary moments in the world
+            experiences. Together, lets make extraordinary moments in the world
             of sports!
           </p>
           <div className="text-start">

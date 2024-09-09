@@ -16,7 +16,6 @@ export default function Home() {
       <Partners />
       <Testimonials />
       <Blogs />
-      <ContactUs />
     </main>
   );
 }

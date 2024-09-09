@@ -8,11 +8,13 @@ import { cn } from "@/lib/utils";
 interface TestimonyProps {
   duration: number;
   className?: string;
+  testimony: any;
 }
 
 export default function Testimony({
   duration,
   className = "",
+  testimony,
 }: TestimonyProps) {
   return (
     <motion.div
@@ -22,7 +24,7 @@ export default function Testimony({
       transition={{ duration, ease: "easeIn" }}
       className="text-center md:text-start"
     >
-      <Card className="space-y-3 overflow-hidden rounded-3xl text-[#0D1846] shadow-md">
+      <Card className="space-y-3 overflow-hidden rounded-3xl border border-[#D4D2E3] text-[#0D1846] shadow-md">
         <CardHeader className={cn("overflow-hidden", className)}>
           <Image
             src={woman}
@@ -32,14 +34,11 @@ export default function Testimony({
           />
         </CardHeader>
         <CardContent className="space-y-5 p-10">
-          <p className="font-semibold">Peruri, 2021</p>
-          <p>
-            &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Officia fugit, in repellat nisi voluptates earum!&quot;
-          </p>
+          <p className="font-semibold">{testimony.attributes.client_company}</p>
+          <p>&quot;{testimony.attributes.testimoni}&quot;</p>
           <div>
-            <h3 className="font-bold">John Doe</h3>
-            <p>Head of Marketing at Facebook</p>
+            <h3 className="font-bold">{testimony.attributes.client_name}</h3>
+            <p>{testimony.attributes.client_occupation}</p>
           </div>
         </CardContent>
       </Card>

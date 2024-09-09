@@ -7,22 +7,20 @@ interface ContactUsHeadersProps {
 export default function ContactUsHeaders({ data }: ContactUsHeadersProps) {
   return (
     <div className="mx-auto w-full space-y-5 text-center sm:text-start">
-      <h1 className="font-semibold">HUBUNGI KAMI</h1>
-      <h3 className="text-3xl font-bold">
-        Wujudkan Konsep Acara Terbaik Anda Sekarang!
-      </h3>
-      <p className="max-w-xl">
-        Tim RJI siap untuk melayani berbagai kebutuhan acara terbaik Anda.
-        Hubungi kami sekarang dan wujudkan acara Anda yang tak terlupakan!
+      <h1 className="font-semibold">{data.attributes.title}</h1>
+      <h3 className="text-3xl font-bold">{data.attributes.taglines}</h3>
+      <p className="max-w-xl">{data.attributes.description}</p>
+      <p className="flex items-center justify-center break-words sm:justify-start">
+        <Mail className="size-4 flex-shrink-0" />{" "}
+        <span className="ml-3">{data.attributes.email}</span>
       </p>
-      <p className="flex items-center justify-center gap-2 sm:justify-start">
-        <Mail className="size-4" /> contact@company.com
+      <p className="flex items-center justify-center break-words sm:justify-start">
+        <Phone className="size-4 flex-shrink-0" />{" "}
+        <span className="ml-3">{data.attributes.phone_number}</span>
       </p>
-      <p className="flex items-center justify-center gap-2 sm:justify-start">
-        <Phone className="size-4" /> 123 456 789
-      </p>
-      <p className="flex items-center justify-center gap-2 sm:justify-start">
-        <MapPin className="size-4" /> 789 Mcallister St San Fransisco 94102
+      <p className="flex items-center justify-center break-words sm:justify-start">
+        <MapPin className="size-4 flex-shrink-0" />{" "}
+        <span className="ml-3">{data.attributes.address}</span>
       </p>
     </div>
   );
