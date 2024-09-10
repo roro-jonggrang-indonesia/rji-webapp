@@ -16,7 +16,7 @@ export default async function Testimonials() {
 
   const { data: testimonials } = await response2.json();
   return (
-    <section className="bg-white py-10 text-[#0D1846]">
+    <section className="bg-white py-10 text-[#0D1846]" id="testimonials">
       <div className="mx-auto w-full max-w-[1440px] space-y-10 px-6 sm:px-16">
         <div className="mx-auto max-w-2xl space-y-5 text-center">
           <TestimonialsHeaders data={data} />

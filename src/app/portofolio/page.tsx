@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import avatar from "@/assets/Avatar.png";
+import avatar from "@/assets/portfolio-image.png";
 import { Lexend } from "next/font/google";
 import MenuTabs from "./MenuTabs";
 
@@ -38,7 +38,7 @@ export default async function Page() {
           </p>
         </div>
         <div className="max-w-xl sm:w-1/2">
-          <Image src={avatar} alt="" sizes="100vw" />
+          <Image src={avatar} alt="" sizes="100vw" priority />
         </div>
       </div>
       <MenuTabs data={filterData} />

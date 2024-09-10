@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html>
       <body
-        className={`${dmSans.className} relative overflow-x-hidden bg-white`}
+        className={`${dmSans.className} relative overflow-x-hidden scroll-smooth bg-white focus:scroll-auto`}
       >
         <Navbar />
         {children}

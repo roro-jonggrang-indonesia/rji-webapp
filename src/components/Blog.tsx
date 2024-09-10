@@ -51,7 +51,7 @@ export default function Blog({ duration, article }: BlogProps) {
         </CardContent>
         <CardFooter className="text-start">
           <Link
-            href={"/"}
+            href={`article/${article.id}`}
             className="flex items-center font-bold hover:underline"
           >
             Baca Artikel <ArrowRight className="size-5" />

@@ -12,7 +12,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import logo from "@/assets/rji-logo.png";
 import logoWhite from "@/assets/rji-logo-white.png";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { navItems } from "@/data";
 import { Equal, X } from "lucide-react";
 
@@ -158,7 +158,23 @@ interface NavItemProps {
 
 function NavItem({ item, className = "" }: NavItemProps) {
   const pathname = usePathname();
+  const router = useRouter(); // To programmatically navigate
   const active = pathname === item.href;
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (item.href.startsWith("#")) {
+      e.preventDefault();
+
+      if (pathname === "/") {
+        const element = document.querySelector(item.href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        router.push(`/${item.href}`);
+      }
+    }
+  };
 
   const DynamicTag = active ? "span" : Link;
 
@@ -167,6 +183,7 @@ function NavItem({ item, className = "" }: NavItemProps) {
       <DynamicTag
         href={item.href}
         className={`${active ? "font-semibold" : ""}`}
+        onClick={item.href.startsWith("#") ? handleClick : undefined}
       >
         {item.label}
       </DynamicTag>
