@@ -63,7 +63,7 @@ export default function SearchResult({ query, data }: SearchResultsProps) {
               <div className="ml-0 flex justify-start">
                 <Button asChild variant="ghost" className="p-0">
                   <Link
-                    href={`article/${firstData.id}`}
+                    href={`artikel/${firstData.id}`}
                     className="flex items-center font-semibold"
                   >
                     Read more <ArrowRight className="ml-2 size-4" />

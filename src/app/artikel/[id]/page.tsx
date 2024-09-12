@@ -4,26 +4,25 @@ import { Lexend } from "next/font/google";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import OtherWorks from "./OtherWorks";
+import OtherBlogs from "./OtherBlogs";
 import { notFound } from "next/navigation";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
-interface PortofolioPageProps {
+interface ArticlePageProps {
   params: { id: string };
 }
 
 export async function generateMetadata({
   params: { id },
-}: PortofolioPageProps): Promise<Metadata> {
+}: ArticlePageProps): Promise<Metadata> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios/${id}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}`,
   );
-  const { data } = await response.json();
-
   if (response.status === 404) {
     notFound();
   }
+  const { data } = await response.json();
 
   return {
     title: data.attributes.title,
@@ -31,9 +30,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params: { id } }: PortofolioPageProps) {
+export default async function Page({ params: { id } }: ArticlePageProps) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios/${id}?populate=*`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}?populate=*`,
   );
   const { data } = await response.json();
   return (
@@ -41,16 +40,14 @@ export default async function Page({ params: { id } }: PortofolioPageProps) {
       {/* header */}
       <div className="min-h-[748px] w-full items-center justify-center space-y-7">
         <div className="flex w-full flex-wrap justify-center gap-3 pt-[144px]">
-          {data.attributes.service_category.map((category: any) => (
-            <Button
-              key={category}
-              disabled
-              size="sm"
-              className="rounded-full border border-black bg-transparent text-xs"
-            >
-              {category}
-            </Button>
-          ))}
+          <Button
+            asChild
+            size="sm"
+            variant="outline"
+            className="rounded-full border border-black bg-[#0D1846] text-xs text-white hover:bg-[#0D1846] hover:text-white"
+          >
+            <p>{data.attributes.category}</p>
+          </Button>
         </div>
         <h1
           className={`${lexend.className} text-center text-4xl font-semibold`}
@@ -64,10 +61,10 @@ export default async function Page({ params: { id } }: PortofolioPageProps) {
         </div>
         <div className="relative left-1/2 right-1/2 -ml-[50vw] w-screen">
           <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_URL}${data.attributes.cover_image.data[0].attributes.url}`}
+            src={`${process.env.NEXT_PUBLIC_BASE_URL}${data.attributes.cover_image.data.attributes.url}`}
             alt=""
-            width={+`${data.attributes.cover_image.data[0].attributes.width}`}
-            height={+`${data.attributes.cover_image.data[0].attributes.height}`}
+            width={+`${data.attributes.cover_image.data.attributes.width}`}
+            height={+`${data.attributes.cover_image.data.attributes.height}`}
             sizes="100vw"
             className="aspect-[1.83:1] w-full object-cover"
             priority
@@ -76,13 +73,6 @@ export default async function Page({ params: { id } }: PortofolioPageProps) {
       </div>
       {/* Content */}
       <div className="w-full items-center justify-center space-y-7 py-10">
-        <h2 className={`${lexend.className} text-2xl font-bold tracking-wide`}>
-          Detail Event
-        </h2>
-        <iframe
-          className="aspect-video w-full rounded-2xl"
-          src={data.attributes.link_video}
-        ></iframe>
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -103,7 +93,7 @@ export default async function Page({ params: { id } }: PortofolioPageProps) {
         </ReactMarkdown>
       </div>
       <div className="relative left-1/2 right-1/2 -ml-[50vw] w-screen space-y-5 bg-[#F5F7FA] py-16">
-        <OtherWorks id={id} />
+        <OtherBlogs id={id} />
       </div>
     </main>
   );
