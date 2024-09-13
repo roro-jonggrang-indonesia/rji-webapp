@@ -32,7 +32,6 @@ export default async function OtherWorks({ id }: OtherWorksProps) {
   const filterData = data
     .filter((content: any) => content.id.toString() !== id.toString())
     .reverse();
-  console.log(filterData);
   return (
     <div className="mx-auto w-full max-w-[1440px] px-6 text-[#0D1846] sm:px-16">
       <div className="mx-auto items-center justify-between sm:flex">

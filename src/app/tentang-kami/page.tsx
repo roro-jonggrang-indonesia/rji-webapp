@@ -61,7 +61,6 @@ async function TeamMemberSection() {
   );
 
   const { data } = await response.json();
-  console.log(data);
   return (
     <div className="space-y-10 py-16">
       <div className="mx-auto max-w-xl space-y-5">
