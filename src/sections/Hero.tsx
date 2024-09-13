@@ -1,6 +1,7 @@
 import { Lexend } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import { CircleArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -31,8 +32,13 @@ export default async function Hero() {
           <p className="w-full max-w-5xl text-xl tracking-wider text-white">
             {data.attributes.description}
           </p>
-          <Button className="rounded-2xl bg-[#C0AF65] font-semibold text-[#0D1846]">
-            Lihat Portofolio <CircleArrowRight className="ml-2 size-5" />
+          <Button
+            asChild
+            className="rounded-2xl bg-[#C0AF65] font-semibold text-[#0D1846]"
+          >
+            <Link href="/portofolio">
+              Lihat Portofolio <CircleArrowRight className="ml-2 size-5" />
+            </Link>
           </Button>
         </div>
       </div>
