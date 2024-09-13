@@ -13,11 +13,24 @@ interface PortofolioPageProps {
   params: { id: string };
 }
 
+export const revalidate = 60;
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  let { data: portfolios } = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios`,
+  ).then((res) => res.json());
+  return portfolios.map((portfolio: any) => ({
+    id: portfolio.id.toString(),
+  }));
+}
+
 export async function generateMetadata({
   params: { id },
 }: PortofolioPageProps): Promise<Metadata> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios/${id}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios/${id}?populate=*`,
   );
   const { data } = await response.json();
 
@@ -42,6 +55,11 @@ export default async function Page({ params: { id } }: PortofolioPageProps) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios/${id}?populate=*`,
   );
+
+  if (response.status === 404) {
+    notFound();
+  }
+
   const { data } = await response.json();
   return (
     <main className="mx-auto w-full max-w-[1440px] px-6 pb-10 text-[#0D1846] sm:px-16">

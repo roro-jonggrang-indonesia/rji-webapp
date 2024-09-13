@@ -24,11 +24,24 @@ interface ServicePageProps {
   params: { id: string };
 }
 
+export const revalidate = 60;
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  let { data: services } = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/services`,
+  ).then((res) => res.json());
+  return services.map((service: any) => ({
+    id: service.id.toString(),
+  }));
+}
+
 export async function generateMetadata({
   params: { id },
 }: ServicePageProps): Promise<Metadata> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/services/${id}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/services/${id}?populate=*`,
   );
   if (response.status === 404) {
     notFound();
@@ -52,6 +65,10 @@ export default async function Page({ params: { id } }: ServicePageProps) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/services/${id}?populate=*`,
   );
+
+  if (response.status === 404) {
+    notFound();
+  }
   const { data } = await response.json();
 
   const response2 = await fetch(

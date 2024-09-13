@@ -13,11 +13,24 @@ interface ArticlePageProps {
   params: { id: string };
 }
 
+export const revalidate = 60;
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  let { data: articles } = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/articles`,
+  ).then((res) => res.json());
+  return articles.map((article: any) => ({
+    id: article.id.toString(),
+  }));
+}
+
 export async function generateMetadata({
   params: { id },
 }: ArticlePageProps): Promise<Metadata> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}?populate=*`,
   );
   if (response.status === 404) {
     notFound();
@@ -41,6 +54,10 @@ export default async function Page({ params: { id } }: ArticlePageProps) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}?populate=*`,
   );
+
+  if (response.status === 404) {
+    notFound();
+  }
   const { data } = await response.json();
   return (
     <main className="mx-auto w-full max-w-[1440px] px-6 pb-10 text-[#0D1846] sm:px-16">

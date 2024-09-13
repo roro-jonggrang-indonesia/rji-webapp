@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     "Roro Jonggrang Indonesia Event Organizer (EO) memberikan informasi lengkap, terbaik & profesional untuk seluruh klien terkait kebutuhan acara sport & korporat",
   keywords: ["Event Organizer (EO)", "EO Sport", "EO Jakarta", "EO Event"],
 };
+
 interface PageProps {
   searchParams: { q: string };
 }

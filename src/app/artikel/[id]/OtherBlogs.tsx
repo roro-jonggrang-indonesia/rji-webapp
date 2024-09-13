@@ -39,7 +39,7 @@ export default async function OtherWorks({ id }: OtherWorksProps) {
         <h3
           className={`${lexend.className} text-wide text-center text-3xl font-semibold sm:text-start`}
         >
-          Other Works
+          Other Blogs
         </h3>
         <Button
           asChild
@@ -100,7 +100,7 @@ function OtherBlogsItem({ content }: { content: any }) {
             variant="outline"
             className="ml-auto rounded-full hover:border-[#0D1846] hover:bg-[#0D1846] hover:text-white"
           >
-            <Link href={`/portofolio/${content.id}`}>
+            <Link href={`/artikel/${content.id}`}>
               See More
               <ArrowRightCircle className="ml-3 size-4 flex-shrink-0" />
             </Link>

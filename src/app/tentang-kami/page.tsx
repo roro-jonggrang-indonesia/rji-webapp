@@ -58,7 +58,6 @@ export default function Page() {
 async function TeamMemberSection() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/about-us-team-members?populate=*`,
-    { next: { revalidate: 1 } },
   );
 
   const { data } = await response.json();
