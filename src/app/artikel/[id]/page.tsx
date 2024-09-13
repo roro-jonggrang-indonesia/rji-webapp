@@ -27,6 +27,13 @@ export async function generateMetadata({
   return {
     title: data.attributes.title,
     description: data.attributes.content.slice(0, 160),
+    openGraph: {
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}${data.attributes.cover_image.data.attributes.url}`,
+        },
+      ],
+    },
   };
 }
 
@@ -38,7 +45,7 @@ export default async function Page({ params: { id } }: ArticlePageProps) {
   return (
     <main className="mx-auto w-full max-w-[1440px] px-6 pb-10 text-[#0D1846] sm:px-16">
       {/* header */}
-      <div className="min-h-[748px] w-full items-center justify-center space-y-7">
+      <div className="w-full items-center justify-center space-y-7 sm:min-h-[748px]">
         <div className="flex w-full flex-wrap justify-center gap-3 pt-[144px]">
           <Button
             asChild

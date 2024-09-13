@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import { ArrowRightCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface ServiceProps {
   data: any;
@@ -33,7 +35,28 @@ export default async function Service({ data, reverse = false }: ServiceProps) {
         <h3 className="text-3xl font-bold tracking-wider">
           {data.attributes.title}
         </h3>
-        <p className="line-clamp-3 text-justify">{data.attributes.content}</p>
+        <div className="line-clamp-3 text-justify">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              img: (props: any) => (
+                <Image
+                  src={props.src}
+                  alt={props.alt}
+                  sizes="100vw"
+                  width={1000}
+                  height={1000}
+                  className="w-full rounded-2xl"
+                />
+              ),
+              p: (props: any) => (
+                <p className="text-justify">{props.children}</p>
+              ),
+            }}
+          >
+            {data.attributes.content}
+          </ReactMarkdown>
+        </div>
         <div className="flex items-start justify-start">
           <Button
             asChild

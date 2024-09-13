@@ -129,7 +129,7 @@ export default function Navbar({ className }: { className?: string }) {
           transition={{
             duration: 0.5,
           }}
-          className="fixed left-0 right-0 top-[70px] z-10 rounded-b-xl bg-[#0D1846] shadow-2xl md:hidden"
+          className="fixed left-0 right-0 top-[70px] z-30 rounded-b-xl bg-[#0D1846] shadow-2xl md:hidden"
         >
           <ul className="flex flex-col items-center justify-center">
             {navItems.map((item, i) => (

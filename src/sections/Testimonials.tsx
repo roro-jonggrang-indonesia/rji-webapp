@@ -1,6 +1,13 @@
 import Testimony from "@/components/Testimony";
 import Image from "next/image";
 import TestimonialsHeaders from "./testimonials/TestimonialsHeaders";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const bgColor: string[] = ["bg-[#008080]", "bg-[#0D1846]", "bg-[#CFC28A]"];
 
@@ -21,16 +28,21 @@ export default async function Testimonials() {
         <div className="mx-auto max-w-2xl space-y-5 text-center">
           <TestimonialsHeaders data={data} />
         </div>
-        <div className="grid grid-cols-1 gap-x-16 gap-y-6 md:grid-cols-3">
-          {testimonials.map((testimony: any, idx: number) => (
-            <Testimony
-              key={testimony.id}
-              duration={1}
-              className={`${bgColor[idx % bgColor.length]}`}
-              testimony={testimony}
-            />
-          ))}
-        </div>
+        <Carousel className="mx-auto w-64 sm:w-full">
+          <CarouselContent className="">
+            {testimonials.map((testimony: any, idx: number) => (
+              <CarouselItem key={testimony.id} className="py-5 sm:basis-1/4">
+                <Testimony
+                  duration={1}
+                  className={`${bgColor[idx % bgColor.length]}`}
+                  testimony={testimony}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );

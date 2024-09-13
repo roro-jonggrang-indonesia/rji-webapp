@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface BlogProps {
   duration: number;
@@ -45,9 +47,28 @@ export default function Blog({ duration, article }: BlogProps) {
         </CardHeader>
         <CardContent className="space-y-5 text-start">
           <h3 className="text-lg font-bold">{article.attributes.title}</h3>
-          <p className="line-clamp-3 leading-7">
-            &quot;{article.attributes.content}&quot;
-          </p>
+          <div className="line-clamp-3 leading-7">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                img: (props: any) => (
+                  <Image
+                    src={props.src}
+                    alt={props.alt}
+                    sizes="100vw"
+                    width={1000}
+                    height={1000}
+                    className="w-full rounded-2xl"
+                  />
+                ),
+                p: (props: any) => (
+                  <p className="text-justify">{props.children}</p>
+                ),
+              }}
+            >
+              {article.attributes.content}
+            </ReactMarkdown>
+          </div>
         </CardContent>
         <CardFooter className="text-start">
           <Link

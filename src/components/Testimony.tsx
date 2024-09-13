@@ -25,9 +25,15 @@ export default function Testimony({
       className="text-center md:text-start"
     >
       <Card className="space-y-3 overflow-hidden rounded-3xl border border-[#D4D2E3] text-[#0D1846] shadow-md">
-        <CardHeader className={cn("overflow-hidden", className)}>
+        <CardHeader className={cn("overflow-hidden p-0", className)}>
           <Image
-            src={woman}
+            src={`${process.env.NEXT_PUBLIC_BASE_URL}${testimony.attributes.client_photo.data.attributes.url}`}
+            width={
+              +`${testimony.attributes.client_photo.data.attributes.width}`
+            }
+            height={
+              +`${testimony.attributes.client_photo.data.attributes.height}`
+            }
             alt=""
             sizes="100vw"
             className="-m-10 mx-auto size-96 w-full object-cover"

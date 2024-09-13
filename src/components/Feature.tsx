@@ -1,8 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Video from "next-video";
-import videoContent from "/videos/videoplayback.mp4.json";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import avatar from "@/assets/Avatar.png";
@@ -16,6 +14,8 @@ import {
   upVariants,
 } from "@/lib/variants";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -112,9 +112,9 @@ export default function Feature({
               whileInView="whileInView"
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "easeInOut" }}
-              className="w-1/2 border border-[#0D1846] font-bold"
+              className="w-full border-2 border-[#C0AF65] font-bold"
             />
-            <motion.p
+            <motion.div
               variants={upVariants}
               initial="initial"
               whileInView="whileInView"
@@ -122,8 +122,27 @@ export default function Feature({
               transition={{ duration: 1.5, ease: "easeInOut" }}
               className="line-clamp-3 text-[#0D1846] sm:line-clamp-4 sm:text-lg"
             >
-              {content.attributes.content}
-            </motion.p>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  img: (props: any) => (
+                    <Image
+                      src={props.src}
+                      alt={props.alt}
+                      sizes="100vw"
+                      width={1000}
+                      height={1000}
+                      className="w-full rounded-2xl"
+                    />
+                  ),
+                  p: (props: any) => (
+                    <p className="text-justify">{props.children}</p>
+                  ),
+                }}
+              >
+                {content.attributes.content}
+              </ReactMarkdown>
+            </motion.div>
           </div>
           <div className="flex items-end justify-end">
             <div className="flex flex-grow flex-col space-y-2.5">

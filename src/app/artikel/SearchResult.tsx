@@ -5,6 +5,8 @@ import { Lexend } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 const lexend = Lexend({ subsets: ["latin"] });
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface SearchResultsProps {
   query: string;
@@ -57,9 +59,28 @@ export default function SearchResult({ query, data }: SearchResultsProps) {
               <h2 className={`${lexend.className} text-2xl font-semibold`}>
                 {firstData.attributes.title}
               </h2>
-              <p className="line-clamp-4 text-justify">
-                {firstData.attributes.content}
-              </p>
+              <div className="line-clamp-4 text-justify">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    img: (props: any) => (
+                      <Image
+                        src={props.src}
+                        alt={props.alt}
+                        sizes="100vw"
+                        width={1000}
+                        height={1000}
+                        className="w-full rounded-2xl"
+                      />
+                    ),
+                    p: (props: any) => (
+                      <p className="text-justify">{props.children}</p>
+                    ),
+                  }}
+                >
+                  {firstData.attributes.content}
+                </ReactMarkdown>
+              </div>
               <div className="ml-0 flex justify-start">
                 <Button asChild variant="ghost" className="p-0">
                   <Link

@@ -28,6 +28,13 @@ export async function generateMetadata({
   return {
     title: data.attributes.title,
     description: data.attributes.content.slice(0, 160),
+    openGraph: {
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}${data.attributes.cover_image.data[0].attributes.url}`,
+        },
+      ],
+    },
   };
 }
 

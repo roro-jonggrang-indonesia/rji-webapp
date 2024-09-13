@@ -6,6 +6,13 @@ import image from "@/assets/contactus.png";
 import woman from "@/assets/woman.png";
 import { cn } from "@/lib/utils";
 import dummy from "@/assets/dummy.png";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -19,6 +26,8 @@ export const metadata: Metadata = {
     "EO Sport",
   ],
 };
+
+const bgColor: string[] = ["bg-[#008080]", "bg-[#0D1846]", "bg-[#CFC28A]"];
 
 export default function Page() {
   return (
@@ -46,7 +55,14 @@ export default function Page() {
   );
 }
 
-function TeamMemberSection() {
+async function TeamMemberSection() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/about-us-team-members?populate=*`,
+    { next: { revalidate: 1 } },
+  );
+
+  const { data } = await response.json();
+  console.log(data);
   return (
     <div className="space-y-10 py-16">
       <div className="mx-auto max-w-xl space-y-5">
@@ -60,30 +76,46 @@ function TeamMemberSection() {
           mewujudkan dan mensukseskan setiap acara Anda.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3">
-        <TeamMember className="bg-[#008080]" />
-        <TeamMember className="bg-[#0D1846]" />
-        <TeamMember className="bg-[#CFC28A]" />
-      </div>
+      <Carousel className="mx-auto w-64 sm:w-full">
+        <CarouselContent className="">
+          {data.map((teamMember: any, idx: number) => (
+            <CarouselItem key={teamMember.id} className="py-5 sm:basis-1/3">
+              <TeamMember
+                className={`${bgColor[idx % bgColor.length]}`}
+                teamMember={teamMember}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </div>
   );
 }
 
-function TeamMember({ className = "" }) {
+interface TeamMemberProps {
+  className?: string;
+  teamMember: any;
+}
+
+function TeamMember({ className = "", teamMember }: TeamMemberProps) {
   return (
     <div className="mx-auto flex max-w-72 flex-col items-center space-y-3">
-      <div className={cn("rounded-full", className)}>
+      <div className={cn("max-w-[300px] rounded-full", className)}>
         <Image
-          src={woman}
+          src={`${process.env.NEXT_PUBLIC_BASE_URL}${teamMember.attributes.image.data.attributes.url}`}
+          width={+`${teamMember.attributes.image.data.attributes.width}`}
+          height={+`${teamMember.attributes.image.data.attributes.height}`}
           alt=""
           sizes="100vw"
-          className="aspect-square size-[300px] rounded-full object-cover"
+          className="aspect-square rounded-full object-cover"
         />
       </div>
       <h3 className={`${lexend.className} text-center text-lg font-semibold`}>
-        [Name]
+        {teamMember.attributes.nama}
       </h3>
-      <p className="text-center">[Position]</p>
+      <p className="text-center">{teamMember.attributes.occupation}</p>
     </div>
   );
 }
@@ -179,8 +211,8 @@ function CommitmentSection() {
 
 function ParagraphSection() {
   return (
-    <div className="space-y-1 text-justify">
-      <p className="indent-10">
+    <div className="space-y-7 text-justify">
+      <p>
         Roro Jonggrang Indonesia (RJI) adalah Event Organizer (EO) profesional
         yang berbasis di Jakarta, beroperasi di bawah PT Mahakarya Insan
         Persada. Sebagai EO spesialis event olahraga, RJI memiliki jaringan luas
@@ -188,7 +220,7 @@ function ParagraphSection() {
         Sumatera hingga Papua, siap mendukung kesuksesan setiap acara di
         berbagai wilayah.
       </p>
-      <p className="indent-10">
+      <p>
         Sejak berdiri pada tahun 2009, RJI telah menangani berbagai event
         berskala regional dan internasional dengan sukses. Fokus utama kami
         meliputi penyelenggaraan kompetisi olahraga, corporate gathering,
@@ -197,7 +229,7 @@ function ParagraphSection() {
         dari penyelenggaraan secara on-site, hybrid, hingga virtual atau live
         streaming, yang memungkinkan kami memenuhi kebutuhan beragam klien kami.
       </p>
-      <p className="indent-10">
+      <p>
         Tim RJI terdiri dari para profesional berpengalaman yang menguasai
         berbagai aspek manajemen acara. Mulai dari perencanaan hingga eksekusi
         di lapangan, kami memastikan setiap detail acara terorganisir dengan
@@ -206,7 +238,7 @@ function ParagraphSection() {
         kami memberikan perhatian penuh terhadap kualitas dan kepuasan
         pelanggan.
       </p>
-      <p className="indent-10">
+      <p>
         Kami juga memanfaatkan teknologi canggih dalam pengelolaan acara,
         seperti pengembangan website khusus event, layanan pendaftaran online,
         pengelolaan media sosial acara, serta layanan live skor dan statistik
@@ -214,7 +246,7 @@ function ParagraphSection() {
         keterlibatan peserta dan penonton, serta memastikan pengelolaan event
         berjalan dengan efisien dan lancar.
       </p>
-      <p className="indent-10">
+      <p>
         Sebagai partner andal, Roro Jonggrang Indonesia berkomitmen untuk terus
         berkembang dan berinovasi dalam menghadirkan konsep acara yang kreatif,
         solutif, dan berkelas. Kami memahami bahwa setiap acara adalah

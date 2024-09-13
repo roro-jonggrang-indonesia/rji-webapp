@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     "Roro Jonggrang Indonesia Event Organizer (EO) memberikan informasi lengkap, terbaik & profesional untuk seluruh klien terkait kebutuhan acara sport & korporat",
   keywords: ["Event Organizer (EO)", "EO Sport", "EO Jakarta", "EO Event"],
 };
-
 interface PageProps {
   searchParams: { q: string };
 }
@@ -22,8 +21,6 @@ export default async function Page({ searchParams: { q } }: PageProps) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/articles?populate=*`,
   );
   const { data } = await response.json();
-
-  const filterData = data.reverse();
 
   return (
     <main className="mx-auto w-full max-w-[1440px] px-6 pb-10 pt-16 text-[#0D1846] sm:px-16">

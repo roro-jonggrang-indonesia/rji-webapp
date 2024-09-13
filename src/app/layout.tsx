@@ -5,8 +5,11 @@ import Footer from "@/components/Footer";
 import { DM_Sans } from "next/font/google";
 import WhatsappButton from "@/components/WhatsappButton";
 import ContactUs from "@/sections/ContactUs";
+import { Toaster } from "@/components/ui/toaster";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +36,7 @@ export default function RootLayout({
         <ContactUs />
         <Footer />
         <WhatsappButton />
+        <Toaster />
       </body>
     </html>
   );

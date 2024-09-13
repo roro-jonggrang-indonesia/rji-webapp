@@ -40,10 +40,18 @@ export default function Footer() {
         <div className="col-span-1 space-y-3 sm:mx-auto">
           <h3 className="font-bold">Company</h3>
           <ul className="space-y-3 text-muted-foreground">
-            <li>About Us</li>
-            <li>Portfolio</li>
-            <li>Service</li>
-            <li>Blogs</li>
+            <li>
+              <Link href={"/tentang-kami"}>About Us</Link>
+            </li>
+            <li>
+              <Link href={"/portfolio"}>Portfolio</Link>
+            </li>
+            <li>
+              <Link href={"/layanan"}>Layanan</Link>
+            </li>
+            <li>
+              <Link href={"/artikel"}>Blogs</Link>
+            </li>
             <li>Contact Us</li>
           </ul>
         </div>
