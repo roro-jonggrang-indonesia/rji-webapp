@@ -15,32 +15,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ]);
 
   const articleEntries = articles.map((article: any) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/artikel/${article.id}`,
+    url: `${process.env.NEXT_PUBLIC_URL}/artikel/${article.id}`,
   }));
 
   const servicesEntries = services.map((service: any) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/services/${service.id}`,
+    url: `${process.env.NEXT_PUBLIC_URL}/services/${service.id}`,
   }));
 
   const portfoliosEntries = portfolios.map((portfolio: any) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/portfolios/${portfolio.id}`,
+    url: `${process.env.NEXT_PUBLIC_URL}/portfolios/${portfolio.id}`,
   }));
 
   return [
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+      url: `${process.env.NEXT_PUBLIC_URL}/`,
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/artikel`,
+      url: `${process.env.NEXT_PUBLIC_URL}/artikel`,
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/layanan`,
+      url: `${process.env.NEXT_PUBLIC_URL}/layanan`,
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/portofolio`,
+      url: `${process.env.NEXT_PUBLIC_URL}/portofolio`,
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/tentang-kami`,
+      url: `${process.env.NEXT_PUBLIC_URL}/tentang-kami`,
     },
     ...portfoliosEntries,
     ...servicesEntries,
