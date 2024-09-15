@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "admin.rorojonggrang-eo.com",
       },
+      {
+        protocol: "https",
+        hostname: "api.rorojonggrang-eo.com",
+      },
     ],
   },
 };
