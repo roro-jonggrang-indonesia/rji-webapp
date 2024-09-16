@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import OtherBlogs from "./OtherBlogs";
 import { notFound } from "next/navigation";
+import { formatDate } from "@/lib/utils";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   let { data: articles } = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/articles`,
+    { next: { revalidate: 60 } },
   ).then((res) => res.json());
   return articles.map((article: any) => ({
     id: article.id.toString(),
@@ -74,14 +76,14 @@ export default async function Page({ params: { id } }: ArticlePageProps) {
           </Button>
         </div>
         <h1
-          className={`${lexend.className} text-center text-4xl font-semibold`}
+          className={`${lexend.className} mx-auto max-w-[860px] text-center text-4xl font-semibold`}
         >
           {data.attributes.title}
         </h1>
         <div className="w-full text-center">
-          <p className="font-medium">{data.attributes.company_name}</p>
-          <p className="font-light">{data.attributes.event_date}</p>
-          <p className="font-light">{data.attributes.location}</p>
+          <p className="font-medium">
+            {formatDate(new Date(data.attributes.publishedAt), false)}
+          </p>
         </div>
         <div className="relative left-1/2 right-1/2 -ml-[50vw] w-screen">
           <Image

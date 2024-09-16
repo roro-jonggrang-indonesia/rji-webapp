@@ -1,0 +1,30 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up SSH agent and add the private key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add remote host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SERVER_ADDRESS }} >> ~/.ssh/known_hosts
+
+      # - name: Copy repository to server
+      #   run: |
+      #     rsync -avz --exclude='.env' -e "ssh -o StrictHostKeyChecking=no" . ubuntu@${{ secrets.SERVER_ADDRESS }}:~/rji-webapp
+
+      - name: Execute remote command via SSH
+        run: ssh ubuntu@${{ secrets.SERVER_ADDRESS }} './build-prod.sh'

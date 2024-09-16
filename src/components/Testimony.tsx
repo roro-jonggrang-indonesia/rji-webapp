@@ -39,14 +39,16 @@ export default function Testimony({
             className="-m-10 mx-auto size-96 w-full object-cover"
           />
         </CardHeader>
-        <CardContent className="space-y-5 p-10">
+        <CardContent className="h-96 max-h-96 min-h-64 space-y-5 overflow-hidden px-8 py-5">
           <p className="font-semibold">{testimony.attributes.client_company}</p>
           <p>&quot;{testimony.attributes.testimoni}&quot;</p>
+        </CardContent>
+        <CardFooter className="start flex space-x-2 px-8">
           <div>
             <h3 className="font-bold">{testimony.attributes.client_name}</h3>
             <p>{testimony.attributes.client_occupation}</p>
           </div>
-        </CardContent>
+        </CardFooter>
       </Card>
     </motion.div>
   );

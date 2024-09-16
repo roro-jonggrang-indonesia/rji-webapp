@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Blogs from "@/sections/Blogs";
 import ContactUs from "@/sections/ContactUs";
 import Facts from "@/sections/Facts";
