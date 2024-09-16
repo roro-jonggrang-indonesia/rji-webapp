@@ -21,6 +21,7 @@ export default function Navbar({ className }: { className?: string }) {
   const [visible, setVisible] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
   const [showNavbar, setShowNavbar] = useState(false);
+  const pathname = usePathname();
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
@@ -55,8 +56,9 @@ export default function Navbar({ className }: { className?: string }) {
           duration: 0.5,
         }}
         className={cn(
-          "fixed top-0 z-50 h-[84px] w-full text-black transition-colors duration-500 ease-in-out lg:min-w-fit",
+          "fixed top-0 z-50 h-[84px] w-full transition-colors duration-500 ease-in-out lg:min-w-fit",
           {
+            "text-white": pathname === "/" || pathname.includes("layanan"),
             "bg-transparent": isAtTop && !showNavbar,
             "bg-[#0D1846] text-white": (!isAtTop && visible) || showNavbar,
           },

@@ -24,14 +24,17 @@ export default async function Testimonials() {
   const { data: testimonials } = await response2.json();
   return (
     <section className="bg-white py-10 text-[#0D1846]" id="testimonials">
-      <div className="mx-auto w-full max-w-[1440px] space-y-10 px-6 sm:px-16">
+      <div className="mx-auto w-full max-w-[1200px] space-y-10 px-6 sm:px-16">
         <div className="mx-auto max-w-2xl space-y-5 text-center">
           <TestimonialsHeaders data={data} />
         </div>
         <Carousel className="mx-auto w-64 sm:w-full">
-          <CarouselContent className="">
+          <CarouselContent>
             {testimonials.map((testimony: any, idx: number) => (
-              <CarouselItem key={testimony.id} className="py-5 sm:basis-1/4">
+              <CarouselItem
+                key={testimony.id}
+                className="py-5 sm:basis-1/3 sm:pl-6"
+              >
                 <Testimony
                   duration={1}
                   className={`${bgColor[idx % bgColor.length]}`}

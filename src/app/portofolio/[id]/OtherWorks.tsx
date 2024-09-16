@@ -94,8 +94,10 @@ function OtherWorksItem({ content }: { content: any }) {
             className="aspect-[1.3/1] h-full w-full rounded-t-2xl object-cover"
           />
         </CardHeader>
-        <CardContent className="pt-5">
-          <h4 className="text-lg font-semibold">{content.attributes.title}</h4>
+        <CardContent className="h-full min-h-24 pt-5">
+          <h4 className="line-clamp-2 text-lg font-semibold">
+            {content.attributes.title}
+          </h4>
         </CardContent>
         <CardFooter>
           <Button

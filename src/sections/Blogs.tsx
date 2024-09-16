@@ -25,15 +25,18 @@ export default async function Blogs() {
           <BlogsHeaders data={data} />
         </div>
         <div className="grid grid-cols-1 gap-x-16 gap-y-6 md:grid-cols-3">
-          {articles.map((article: any) => (
-            <Blog duration={1} key={article.id} article={article} />
-          ))}
+          {articles
+            .reverse()
+            .slice(0, 3)
+            .map((article: any) => (
+              <Blog duration={1} key={article.id} article={article} />
+            ))}
         </div>
         <Link
           href="/artikel"
-          className="flex items-center justify-center text-center hover:underline"
+          className="flex items-center justify-center text-center text-white hover:underline"
         >
-          Explore more <ArrowRightCircle className="ml-3 size-5" />
+          See more <ArrowRightCircle className="ml-3 size-5" />
         </Link>
       </div>
     </section>

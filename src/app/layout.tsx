@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { DM_Sans } from "next/font/google";
 import WhatsappButton from "@/components/WhatsappButton";
 import ContactUs from "@/sections/ContactUs";
 import { Toaster } from "@/components/ui/toaster";
+import Navbar from "@/components/Navbar";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
