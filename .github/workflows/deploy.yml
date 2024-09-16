@@ -27,4 +27,4 @@ jobs:
       #     rsync -avz --exclude='.env' -e "ssh -o StrictHostKeyChecking=no" . ubuntu@ssh.rorojonggrang-eo.com:~/rji-webapp
 
       - name: Execute remote command via SSH
-        run: ssh ubuntu@ssh.rorojonggrang-eo.com '(echo -n "TEST " && date) >> ~/test.log' #'./build-prod.sh'
+        run: ssh ubuntu@ssh.rorojonggrang-eo.com './build-prod.sh'
