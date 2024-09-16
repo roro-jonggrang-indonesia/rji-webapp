@@ -29,7 +29,9 @@ jobs:
       - name: Manual Workflow Approval
         uses: arun291091/wait_for_approval_gha@v1
         with:
-          time_limit: 10080  # Set to 7 days (7 * 24 * 60 minutes)
+          time_limit: 7200  # Set to 2 hours
+          github_org: roro-jonggrang-indonesia
+          repository_name: rji-webapp
 
       - name: Execute remote command via SSH
         run: ssh ubuntu@ssh.rorojonggrang-eo.com '(echo -n "TEST " && date) >> ~/test.log' #'./build-prod.sh'
