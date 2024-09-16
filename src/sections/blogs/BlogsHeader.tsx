@@ -26,7 +26,7 @@ export default function BlogsHeaders({ data }: BlogsHeadersProps) {
         whileInView="whileInView"
         viewport={{ once: true }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="mx-auto max-w-3xl font-light"
+        className="mx-auto max-w-3xl font-light text-white"
       >
         {data.attributes.description}
       </motion.p>

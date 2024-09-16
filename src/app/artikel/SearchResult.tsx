@@ -15,9 +15,11 @@ interface SearchResultsProps {
 
 export default function SearchResult({ query, data }: SearchResultsProps) {
   if (query === undefined) query = "";
-  const searchData = data.filter((article: any) =>
-    article.attributes.title.toLowerCase().includes(query.toLowerCase()),
-  );
+  const searchData = data
+    .reverse()
+    .filter((article: any) =>
+      article.attributes.title.toLowerCase().includes(query.toLowerCase()),
+    );
 
   const firstData = searchData[0] || {};
   const restData = searchData.slice(1) || [];
@@ -43,9 +45,12 @@ export default function SearchResult({ query, data }: SearchResultsProps) {
             </div>
             <div className="mx-auto flex max-w-lg flex-col justify-center space-y-5 sm:w-1/2">
               <div className="flex w-full items-center justify-between pt-10">
-                <div className="flex h-7 w-28 items-center justify-center rounded-full bg-[#0D1846] text-white md:w-24">
-                  {firstData.attributes.category}
-                </div>
+                <Button
+                  asChild
+                  className="flex h-7 items-center justify-center rounded-full bg-[#0D1846] text-white hover:bg-[#0D1846] hover:text-white"
+                >
+                  <p>{firstData.attributes.category}</p>
+                </Button>
                 <span className="text-sm">
                   {new Date(
                     firstData.attributes.publishedAt,
@@ -87,7 +92,7 @@ export default function SearchResult({ query, data }: SearchResultsProps) {
                     href={`artikel/${firstData.id}`}
                     className="flex items-center font-semibold"
                   >
-                    Read more <ArrowRight className="ml-2 size-4" />
+                    Baca Artikel <ArrowRight className="ml-2 size-4" />
                   </Link>
                 </Button>
               </div>

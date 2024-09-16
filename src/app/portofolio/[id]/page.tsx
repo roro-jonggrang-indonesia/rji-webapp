@@ -13,13 +13,12 @@ interface PortofolioPageProps {
   params: { id: string };
 }
 
-export const revalidate = 60;
-
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
   let { data: portfolios } = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios`,
+    { next: { revalidate: 60 } },
   ).then((res) => res.json());
   return portfolios.map((portfolio: any) => ({
     id: portfolio.id.toString(),

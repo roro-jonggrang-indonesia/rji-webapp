@@ -8,7 +8,7 @@ export default function ContactUsHeaders({ data }: ContactUsHeadersProps) {
   return (
     <div className="mx-auto w-full space-y-5 text-center sm:text-start">
       <h1 className="font-semibold">{data.attributes.title}</h1>
-      <h3 className="text-3xl font-bold">{data.attributes.taglines}</h3>
+      <h3 className="text-3xl font-bold">{data.attributes.tagline}</h3>
       <p className="max-w-xl">{data.attributes.description}</p>
       <p className="flex items-center justify-center break-words sm:justify-start">
         <Mail className="size-4 flex-shrink-0" />{" "}

@@ -24,13 +24,12 @@ interface ServicePageProps {
   params: { id: string };
 }
 
-export const revalidate = 60;
-
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
   let { data: services } = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/services`,
+    { next: { revalidate: 60 } },
   ).then((res) => res.json());
   return services.map((service: any) => ({
     id: service.id.toString(),

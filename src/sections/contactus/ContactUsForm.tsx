@@ -78,7 +78,7 @@ export default function ContactUsForm() {
       <Card className="w-full rounded-2xl border-none bg-black/5">
         <CardContent className="space-y-5 py-4">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
               <FormField
                 control={form.control}
                 name="name"

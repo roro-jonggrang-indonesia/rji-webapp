@@ -26,9 +26,12 @@ export default function Blog({ duration, article }: BlogProps) {
       <Card className="space-y-3 rounded-3xl bg-white text-[#0D1846] shadow-md">
         <CardHeader className="space-y-6 overflow-hidden">
           <div className="flex items-center justify-between">
-            <div className="flex h-7 w-28 items-center justify-center rounded-full bg-[#0D1846] text-white md:w-24">
-              {article.attributes.category}
-            </div>
+            <Button
+              asChild
+              className="flex h-7 items-center justify-center rounded-full bg-[#0D1846] text-white hover:bg-[#0D1846] hover:text-white"
+            >
+              <p>{article.attributes.category}</p>
+            </Button>
             <span className="text-sm">
               {new Date(article.attributes.publishedAt).toLocaleDateString(
                 "id-ID",
@@ -45,7 +48,7 @@ export default function Blog({ duration, article }: BlogProps) {
             className="-m-10 mx-auto size-48 w-full rounded-xl object-cover"
           />
         </CardHeader>
-        <CardContent className="space-y-5 text-start">
+        <CardContent className="min-h-48 space-y-5 text-start">
           <h3 className="text-lg font-bold">{article.attributes.title}</h3>
           <div className="line-clamp-3 leading-7">
             <ReactMarkdown
