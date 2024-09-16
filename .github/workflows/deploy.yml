@@ -22,12 +22,14 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ssh.rorojonggrang-eo.com >> ~/.ssh/known_hosts
 
-      - name: Copy repository to server
-        run: |
-          rsync -avz --exclude='.env' -e "ssh -o StrictHostKeyChecking=no" . ubuntu@ssh.rorojonggrang-eo.com:~/rji-webapp
+      # - name: Copy repository to server
+      #   run: |
+      #     rsync -avz --exclude='.env' -e "ssh -o StrictHostKeyChecking=no" . ubuntu@ssh.rorojonggrang-eo.com:~/rji-webapp
 
       - name: Manual Workflow Approval
-        uses: trstringer/manual-approval@v1.9.1
+        uses: arun291091/wait_for_approval_gha@v1
+        with:
+          time_limit: 10080  # Set to 7 days (7 * 24 * 60 minutes)
 
       - name: Execute remote command via SSH
         run: ssh ubuntu@ssh.rorojonggrang-eo.com '(echo -n "TEST " && date) >> ~/test.log' #'./build-prod.sh'
