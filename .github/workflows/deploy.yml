@@ -20,11 +20,11 @@ jobs:
       - name: Add remote host to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H ssh.rorojonggrang-eo.com >> ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.SERVER_ADDRESS }} >> ~/.ssh/known_hosts
 
       # - name: Copy repository to server
       #   run: |
-      #     rsync -avz --exclude='.env' -e "ssh -o StrictHostKeyChecking=no" . ubuntu@ssh.rorojonggrang-eo.com:~/rji-webapp
+      #     rsync -avz --exclude='.env' -e "ssh -o StrictHostKeyChecking=no" . ubuntu@${{ secrets.SERVER_ADDRESS }}:~/rji-webapp
 
       - name: Execute remote command via SSH
-        run: ssh ubuntu@ssh.rorojonggrang-eo.com './build-prod.sh'
+        run: ssh ubuntu@${{ secrets.SERVER_ADDRESS }} './build-prod.sh'
