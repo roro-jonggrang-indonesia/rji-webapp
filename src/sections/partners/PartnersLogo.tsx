@@ -24,7 +24,7 @@ export default function PartnersLogo({ data }: PartnersHeadersProps) {
         sizes="100vw"
         width={120}
         height={100}
-        className="mx-auto my-auto grayscale transition duration-500 ease-out hover:scale-105 hover:grayscale-0"
+        className="mx-auto my-auto transition duration-500 ease-out hover:scale-105 hover:grayscale-0 sm:grayscale"
       />
     </motion.div>
   );

@@ -6,6 +6,7 @@ import WhatsappButton from "@/components/WhatsappButton";
 import ContactUs from "@/sections/ContactUs";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/Navbar";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
+      <GoogleTagManager gtmId="G-W37BGXNV3F" />
       <body
         className={`${dmSans.className} relative overflow-x-hidden scroll-smooth bg-white focus:scroll-auto`}
       >
@@ -37,6 +39,14 @@ export default function RootLayout({
         <Footer />
         <WhatsappButton />
         <Toaster />
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/gtag/js?id=G-W37BGXNV3F"
+            height={0}
+            width={0}
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
       </body>
     </html>
   );

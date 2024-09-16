@@ -30,12 +30,12 @@ export default async function Service({ data, reverse = false }: ServiceProps) {
         height={+data.attributes.cover_image.data[0].attributes.height}
         className="mx-auto aspect-square w-full max-w-[600px] rounded-2xl sm:w-1/2"
       />
-      <div className="mx-auto flex max-w-[455px] flex-col space-y-7 sm:w-1/2">
+      <div className="mx-auto flex max-w-[455px] flex-col space-y-5 sm:w-1/2">
         <hr className="w-1/4 border-2 border-[#0D1846]" />
-        <h3 className="text-3xl font-bold tracking-wider">
+        <h3 className="text-4xl font-bold tracking-wider">
           {data.attributes.title}
         </h3>
-        <div className="line-clamp-3 text-justify">
+        <div className="line-clamp-5 text-justify">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{

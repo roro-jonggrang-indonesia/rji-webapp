@@ -117,7 +117,7 @@ export default async function Page({ params: { id } }: ServicePageProps) {
           {data.attributes.content}
         </ReactMarkdown>
       </div>
-      <div className="max-w-[1440px] space-y-5 py-10">
+      <div className="mx-auto max-w-[1440px] space-y-5 py-10">
         <h3 className={`${lexend.className} text-center text-2xl sm:hidden`}>
           Client Testimonial
         </h3>
@@ -138,9 +138,9 @@ export default async function Page({ params: { id } }: ServicePageProps) {
 function OtherTestimonyItem({ content }: { content: any }) {
   return (
     <CarouselItem key={content.id}>
-      <div className="sm:flex">
-        <div className="mx-auto flex w-full flex-col items-center justify-center space-y-2 sm:w-1/3">
-          <div className="h-full max-h-[125px] w-full max-w-[125px]">
+      <div className="gap-x-5 sm:flex">
+        <div className="mx-auto flex flex-col items-center justify-center space-y-2 sm:w-1/4">
+          <div className="h-full max-h-[150px] w-fit max-w-[150px]">
             <Image
               src={`${process.env.NEXT_PUBLIC_BASE_URL}${content.attributes.client_photo.data.attributes.url}`}
               alt=""
@@ -157,11 +157,13 @@ function OtherTestimonyItem({ content }: { content: any }) {
           <p className="font-semibold">{content.attributes.client_name}</p>
           <p>{content.attributes.client_occupation}</p>
         </div>
-        <div className="flex flex-col items-start justify-center space-y-3 sm:w-2/3">
+        <div className="flex flex-col items-start justify-center space-y-3 sm:w-3/4">
           <h3 className={`${lexend.className} hidden text-2xl sm:block`}>
             Client Testimonial
           </h3>
-          <p className="text-justify">{content.attributes.testimoni}</p>
+          <p className="text-justify">
+            &quot;{content.attributes.testimoni}&quot;
+          </p>
         </div>
       </div>
       <h4 className="text-lg font-semibold">{content.attributes.title}</h4>

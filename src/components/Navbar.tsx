@@ -66,28 +66,29 @@ export default function Navbar({ className }: { className?: string }) {
         )}
       >
         <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6 md:px-16">
-          <div className="flex items-center gap-5">
-            {(!isAtTop && visible) || showNavbar ? (
-              <Image
-                src={logoWhite}
-                alt=""
-                width={100}
-                height={100}
-                className="size-10"
-              />
-            ) : (
-              <Image
-                src={logo}
-                alt=""
-                width={100}
-                height={100}
-                className="size-10"
-              />
-            )}
-
-            <p className="hidden md:block">Roro Jonggrang Indonesia</p>
-            <p className="md:hidden">RJI</p>
-          </div>
+          <Link href="/">
+            <div className="flex items-center gap-5">
+              {(!isAtTop && visible) || showNavbar ? (
+                <Image
+                  src={logoWhite}
+                  alt=""
+                  width={100}
+                  height={100}
+                  className="size-10"
+                />
+              ) : (
+                <Image
+                  src={logo}
+                  alt=""
+                  width={100}
+                  height={100}
+                  className="size-10"
+                />
+              )}
+              <p className="hidden md:block">Roro Jonggrang Indonesia</p>
+              <p className="md:hidden">RJI</p>
+            </div>
+          </Link>
           <Button
             variant="ghost"
             className="md:hidden"
