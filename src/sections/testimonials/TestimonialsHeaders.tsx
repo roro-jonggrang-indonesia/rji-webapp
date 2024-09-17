@@ -15,7 +15,7 @@ export default function TestimonialsHeaders({
 }: TestimonialsHeadersProps) {
   return (
     <>
-      <motion.h1
+      <motion.h2
         variants={upVariants}
         initial="initial"
         whileInView="whileInView"
@@ -24,7 +24,7 @@ export default function TestimonialsHeaders({
         className={`${lexend.className} text-3xl font-bold text-primary`}
       >
         {data.attributes.title}
-      </motion.h1>
+      </motion.h2>
       <motion.p
         variants={upVariants}
         initial="initial"

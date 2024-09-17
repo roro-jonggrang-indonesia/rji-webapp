@@ -10,7 +10,7 @@ interface FactsHeadersProps {
 export default function FactsHeader({ data }: FactsHeadersProps) {
   return (
     <>
-      <motion.h1
+      <motion.h2
         variants={fadeVariants}
         initial="initial"
         whileInView="whileInView"
@@ -19,7 +19,7 @@ export default function FactsHeader({ data }: FactsHeadersProps) {
         className="text-center text-2xl font-bold text-primary md:text-start"
       >
         {data.attributes.title}
-      </motion.h1>
+      </motion.h2>
       <motion.p
         variants={fadeVariants}
         initial="initial"
