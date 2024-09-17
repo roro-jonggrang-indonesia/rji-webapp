@@ -6,7 +6,7 @@ import WhatsappButton from "@/components/WhatsappButton";
 import ContactUs from "@/sections/ContactUs";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/Navbar";
-import { GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -29,7 +29,21 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <GoogleTagManager gtmId="G-W37BGXNV3F" />
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-W37BGXNV3F"
+        ></Script>
+        <Script id="google-tag-manager">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-W37BGXNV3F');
+          `}
+        </Script>
+      </head>
       <body
         className={`${dmSans.className} relative overflow-x-hidden scroll-smooth bg-white focus:scroll-auto`}
       >
