@@ -49,7 +49,7 @@ export async function generateMetadata({
 
   return {
     title: data.attributes.title,
-    description: data.attributes.content.slice(0, 160),
+    description: data.attributes.content.slice(0, 150),
     openGraph: {
       images: [
         {
