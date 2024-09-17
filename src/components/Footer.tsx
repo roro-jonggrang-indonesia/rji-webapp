@@ -44,7 +44,7 @@ export default function Footer() {
               <Link href={"/tentang-kami"}>About Us</Link>
             </li>
             <li>
-              <Link href={"/portfolio"}>Portfolio</Link>
+              <Link href={"/portofolio"}>Portfolio</Link>
             </li>
             <li>
               <Link href={"/layanan"}>Layanan</Link>
