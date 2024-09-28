@@ -23,7 +23,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-2">
             <Link
-              href={"https://www.instagram.com/rorojonggrangsporteo/"}
+              href={"https://www.instagram.com/rorojonggrang.eo/"}
               className="flex size-7 items-center justify-center rounded-xl border border-white"
             >
               <Instagram className="size-4" />
