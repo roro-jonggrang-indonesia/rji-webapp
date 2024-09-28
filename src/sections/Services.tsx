@@ -14,7 +14,7 @@ export default async function Services() {
         <ServicesHeader />
       </div>
       <div className="mx-auto grid grid-cols-1 gap-2.5 sm:grid-cols-4">
-        {data.map((service: any) => (
+        {data.slice(0, 4).map((service: any) => (
           <Service service={service} key={service.id} />
         ))}
       </div>

@@ -29,13 +29,12 @@ export default function Service({ service }: ServiceProps) {
             height={
               +`${service.attributes.cover_image.data[0].attributes.height}`
             }
-            className="mx-auto w-full object-cover"
+            className="mx-auto h-full w-full object-cover"
           />
         </CardHeader>
-        <CardDescription className="px-6">
+        <CardDescription className="px-6 py-4">
           {service.attributes.title}
         </CardDescription>
-        <CardFooter></CardFooter>
       </Card>
     </motion.div>
   );
