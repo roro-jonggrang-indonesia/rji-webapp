@@ -18,7 +18,7 @@ export default function Service({ service }: ServiceProps) {
       className="text-center md:text-start"
     >
       <Card className="overflow-hidden rounded-2xl border-none shadow-xl">
-        <CardHeader className="h-[180px] w-[320px] p-0">
+        <CardHeader className="h-[180px] w-full p-0 sm:w-[320px]">
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_URL}${service.attributes.cover_image.data[0].attributes.url}`}
             alt=""
