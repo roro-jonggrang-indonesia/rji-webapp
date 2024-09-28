@@ -6,6 +6,7 @@ import Features from "@/sections/Features";
 import Hero from "@/sections/Hero";
 import Partners from "@/sections/Partners";
 import Testimonials from "@/sections/Testimonials";
+import Services from "@/sections/Services";
 import Image from "next/image";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
     <main>
       <Hero />
       <Features />
+      <Services />
       <Facts />
       <Partners />
       <Testimonials />

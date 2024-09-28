@@ -56,7 +56,7 @@ export default function Navbar({ className }: { className?: string }) {
           duration: 0.5,
         }}
         className={cn(
-          "fixed top-0 z-50 h-[84px] w-full transition-colors duration-500 ease-in-out lg:min-w-fit",
+          "fixed top-0 z-50 h-[84px] w-full text-[#0D1846] transition-colors duration-500 ease-in-out lg:min-w-fit",
           {
             "text-white": pathname === "/" || pathname.includes("layanan"),
             "bg-transparent": isAtTop && !showNavbar,
@@ -68,7 +68,10 @@ export default function Navbar({ className }: { className?: string }) {
         <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6 md:px-16">
           <Link href="/">
             <div className="flex items-center gap-5">
-              {(!isAtTop && visible) || showNavbar ? (
+              {(!isAtTop && visible) ||
+              showNavbar ||
+              pathname === "/" ||
+              pathname.includes("layanan") ? (
                 <Image
                   src={logoWhite}
                   alt=""

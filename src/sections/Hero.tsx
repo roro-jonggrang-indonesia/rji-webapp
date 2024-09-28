@@ -13,7 +13,7 @@ export default async function Hero() {
 
   return (
     <section>
-      <div className="absolute z-10 h-screen w-full bg-black/50" />
+      <div className="absolute z-10 h-screen w-full bg-black/60" />
       <div className="relative h-screen object-fill md:object-cover">
         <video
           src={"/videoSementara.mp4"}
@@ -23,13 +23,13 @@ export default async function Hero() {
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 z-20 mx-auto flex max-w-[1440px] flex-col items-center justify-center space-y-5 px-6 text-center md:items-start md:px-16 md:text-start">
+        <div className="absolute inset-0 z-20 mx-auto flex max-w-[1440px] flex-col items-center justify-center space-y-5 px-6 py-24 text-center sm:justify-end md:items-start md:px-16 md:text-start">
           <h1
             className={`max-w-72 text-4xl tracking-wider ${lexend.className} font-semibold text-[#C0AF65]`}
           >
             {data.attributes.tagline}
           </h1>
-          <p className="w-full max-w-5xl text-xl tracking-wider text-white">
+          <p className="w-full max-w-5xl text-lg tracking-wider text-white sm:text-xl">
             {data.attributes.description}
           </p>
           <Button

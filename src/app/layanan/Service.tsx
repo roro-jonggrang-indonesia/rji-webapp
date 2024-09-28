@@ -8,34 +8,31 @@ import remarkGfm from "remark-gfm";
 
 interface ServiceProps {
   data: any;
-  reverse?: boolean;
 }
 
-export default async function Service({ data, reverse = false }: ServiceProps) {
+export default async function Service({ data }: ServiceProps) {
   return (
     <div
       className={cn(
-        "h-full items-center justify-between gap-5 space-y-10 py-10 sm:flex",
-        {
-          "flex-row": !reverse,
-          "flex-row-reverse": reverse,
-        },
+        "h-full items-center justify-between gap-x-6 space-y-16 py-10 sm:flex",
       )}
     >
-      <Image
-        src={`${process.env.NEXT_PUBLIC_BASE_URL}${data.attributes.cover_image.data[0].attributes.url}`}
-        alt=""
-        sizes="100vw"
-        width={+data.attributes.cover_image.data[0].attributes.width}
-        height={+data.attributes.cover_image.data[0].attributes.height}
-        className="mx-auto aspect-square w-full max-w-[600px] rounded-2xl sm:w-1/2"
-      />
-      <div className="mx-auto flex max-w-[455px] flex-col space-y-5 sm:w-1/2">
+      <div className="flex w-full items-center justify-center sm:w-1/6">
+        <Image
+          src={`${process.env.NEXT_PUBLIC_BASE_URL}${data.attributes.cover_image.data[0].attributes.url}`}
+          alt=""
+          sizes="100vw"
+          width={+data.attributes.cover_image.data[0].attributes.width}
+          height={+data.attributes.cover_image.data[0].attributes.height}
+          className="mx-auto aspect-[0.76/1] w-full rounded-2xl sm:aspect-square sm:max-w-[160px]"
+        />
+      </div>
+      <div className="mx-auto flex flex-col space-y-5 sm:w-5/6">
         <hr className="w-1/4 border-2 border-[#0D1846]" />
-        <h3 className="text-4xl font-bold tracking-wider">
+        <h3 className="text-2xl font-bold tracking-wider sm:text-4xl">
           {data.attributes.title}
         </h3>
-        <div className="line-clamp-5 text-justify">
+        <div className="space-y-5 text-justify">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -56,16 +53,6 @@ export default async function Service({ data, reverse = false }: ServiceProps) {
           >
             {data.attributes.content}
           </ReactMarkdown>
-        </div>
-        <div className="flex items-start justify-start">
-          <Button
-            asChild
-            className="w-full rounded-2xl border bg-[#0D1846] text-white hover:border-[#0D1846] hover:bg-transparent hover:text-[#0D1846] sm:w-fit"
-          >
-            <Link href={`/layanan/${data.id}`}>
-              More <ArrowRightCircle className="ml-2 size-4" />
-            </Link>
-          </Button>
         </div>
       </div>
     </div>
