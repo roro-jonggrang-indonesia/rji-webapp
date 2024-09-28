@@ -20,8 +20,6 @@ export default async function Page() {
     { next: { revalidate: 1 } },
   );
   const { data } = await response.json();
-
-  const filterData = data.reverse();
   return (
     <main>
       {/* header */}
@@ -54,7 +52,7 @@ export default async function Page() {
         </div>
       </section>
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-6 pb-10 text-[#0D1846] sm:px-16">
-        {filterData.map((d: any, idx: number) => (
+        {data.map((d: any, idx: number) => (
           <Service key={idx} data={d} />
         ))}
       </div>
