@@ -16,6 +16,7 @@ export default function PartnersLogo({ data }: PartnersHeadersProps) {
       whileInView="whileInView"
       viewport={{ once: true }}
       transition={{ duration: 1, ease: "easeInOut" }}
+      className="place-self-center"
     >
       <Image
         key={data.id}

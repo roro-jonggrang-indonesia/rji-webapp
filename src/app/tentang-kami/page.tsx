@@ -1,11 +1,14 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import avatar from "@/assets/Avatar.png";
+import TentangKami from "@/assets/tentang-kami.webp";
 import { Lexend } from "next/font/google";
-import image from "@/assets/contactus.png";
-import woman from "@/assets/woman.png";
+import owner from "@/assets/owner.webp";
 import { cn } from "@/lib/utils";
-import dummy from "@/assets/dummy.png";
+import image1 from "@/assets/tentang-kami-1.webp";
+import image2 from "@/assets/tentang-kami-2.webp";
+import image3 from "@/assets/tentang-kami-3.webp";
+import image4 from "@/assets/tentang-kami-4.webp";
+
 import {
   Carousel,
   CarouselContent,
@@ -40,11 +43,11 @@ export default function Page() {
           </h1>
         </div>
         <Image
-          src={avatar}
+          src={TentangKami}
           alt=""
           sizes="100vw"
           priority
-          className="mx-auto aspect-square w-full rounded-2xl object-fill sm:aspect-[2.1/1] sm:object-cover"
+          className="mx-auto aspect-square w-full rounded-2xl object-cover sm:aspect-[2.1/1] sm:object-cover"
         />
         <ParagraphSection />
         <CommitmentSection />
@@ -63,15 +66,20 @@ async function TeamMemberSection() {
   const { data } = await response.json();
   return (
     <div className="space-y-10 py-16">
-      <div className="mx-auto max-w-xl space-y-5">
+      <div className="mx-auto space-y-5">
         <h2
           className={`${lexend.className} text-center text-2xl font-semibold`}
         >
           Meet Our Team Members
         </h2>
         <p className="text-center">
-          Tim profesional kami yang berdedikasi dan berpengalaman siap
-          mewujudkan dan mensukseskan setiap acara Anda.
+          Tim RJI terdiri dari para profesional berpengalaman yang menguasai
+          berbagai aspek manajemen acara. Mulai dari perencanaan hingga eksekusi
+          di lapangan, kami memastikan setiap detail acara terorganisir dengan
+          sempurna, menjamin hasil akhir yang memenuhi standar tinggi kami dan
+          ekspektasi klien. Dengan layanan yang mencakup setiap tahapan acara,
+          kami memberikan perhatian penuh terhadap kualitas dan kepuasan
+          pelanggan.
         </p>
       </div>
       <Carousel className="mx-auto w-64 sm:w-full">
@@ -132,34 +140,34 @@ function SnapshootSection() {
       <div className="mx-auto grid max-w-[1140px] grid-cols-1 place-content-center gap-5 sm:grid-cols-3">
         <div className="relative h-[320px] w-full overflow-hidden rounded-2xl bg-red-400 sm:col-span-2">
           <Image
-            src={image}
+            src={image1}
             alt=""
             sizes="100vw"
-            className="absolute w-full object-cover"
+            className="absolute h-full w-full object-cover"
           />
         </div>
         <div className="relative h-[320px] w-full overflow-hidden rounded-2xl bg-blue-400">
           <Image
-            src={image}
+            src={image2}
             alt=""
             sizes="100vw"
-            className="absolute w-full object-cover"
+            className="absolute h-full w-full object-cover"
           />
         </div>
         <div className="relative h-[320px] w-full overflow-hidden rounded-2xl bg-green-400">
           <Image
-            src={image}
+            src={image3}
             alt=""
             sizes="100vw"
-            className="absolute w-full object-cover"
+            className="absolute h-full w-full object-cover"
           />
         </div>
         <div className="relative h-[320px] w-full overflow-hidden rounded-2xl bg-yellow-400 sm:col-span-2">
           <Image
-            src={image}
+            src={image4}
             alt=""
             sizes="100vw"
-            className="absolute w-full object-cover"
+            className="absolute h-full w-full object-cover"
           />
         </div>
       </div>
@@ -175,7 +183,7 @@ function CommitmentSection() {
       </h2>
       <div className="gap-10 overflow-hidden rounded-2xl bg-[#F5F7FA] shadow-md sm:flex">
         <Image
-          src={image}
+          src={owner}
           alt=""
           sizes="100vw"
           className="aspect-square object-cover sm:aspect-[0.8/1] sm:w-2/5"
@@ -184,21 +192,25 @@ function CommitmentSection() {
           <h3 className={`${lexend.className} text-3xl font-semibold`}>
             “Bringing Dreams to Life in Sports”
           </h3>
-          <p>Welcome to Roro Jonggrang Indonesia!</p>
           <p>
-            We are passionate about bringing the world of sports to life through
-            exceptional and inspiring events. At Roro Jonggrang Indonesia, we
-            believe that every sports event is not just a competition, but a
-            powerful moment to foster camaraderie, sportsmanship, and
-            inspiration for future generations. Our team is dedicated to
-            delivering excellence at every stage of your event, from planning to
-            execution. Thank you for trusting us to create unforgettable sports
-            experiences. Together, lets make extraordinary moments in the world
-            of sports!
+            Joko Pramuji, atau yang akrab disapa Jokes, lahir pada 28 Oktober
+            1979 dan telah menekuni dunia event organizer sejak masa kuliahnya
+            di Universitas Nasional, jurusan Ekonomi. Berbekal pengalaman dan
+            passion yang kuat, Jokes terus konsisten mengembangkan karir di
+            industri ini hingga menjadi salah satu figur sentral dalam
+            penyelenggaraan berbagai event olahraga berskala nasional.
+          </p>
+          <p>
+            Dengan pengalaman yang luas serta jaringan yang kuat di dunia
+            olahraga, Jokes tidak hanya dikenal karena profesionalismenya,
+            tetapi juga karena kemampuannya membangun hubungan yang baik di
+            industri ini. Di bawah kepemimpinannya, Roro Jonggrang Indonesia
+            terus berinovasi dan berkembang menjadi EO yang unggul dan
+            terpercaya.
           </p>
           <div className="text-start">
             <p>Best Regards,</p>
-            <p>[Chiefs Name]</p>
+            <p className="font-semibold">Joko Pramudi</p>
             <p>Chief of Roro Jonggrang Indonesia</p>
           </div>
         </div>
@@ -226,15 +238,6 @@ function ParagraphSection() {
         Exhibitions). Kami menawarkan fleksibilitas dalam format acara, mulai
         dari penyelenggaraan secara on-site, hybrid, hingga virtual atau live
         streaming, yang memungkinkan kami memenuhi kebutuhan beragam klien kami.
-      </p>
-      <p>
-        Tim RJI terdiri dari para profesional berpengalaman yang menguasai
-        berbagai aspek manajemen acara. Mulai dari perencanaan hingga eksekusi
-        di lapangan, kami memastikan setiap detail acara terorganisir dengan
-        sempurna, menjamin hasil akhir yang memenuhi standar tinggi kami dan
-        ekspektasi klien. Dengan layanan yang mencakup setiap tahapan acara,
-        kami memberikan perhatian penuh terhadap kualitas dan kepuasan
-        pelanggan.
       </p>
       <p>
         Kami juga memanfaatkan teknologi canggih dalam pengelolaan acara,

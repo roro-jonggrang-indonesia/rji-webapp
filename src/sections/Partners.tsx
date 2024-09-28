@@ -18,12 +18,12 @@ export default async function Partners() {
 
   return (
     <section
-      className={`${lexend.className} mx-auto w-full max-w-[1440px] space-y-20 bg-white px-6 py-10 text-[#0D1846] sm:px-16`}
+      className={`${lexend.className} mx-auto w-full max-w-[1440px] space-y-10 bg-white px-6 py-10 text-[#0D1846] sm:px-16`}
     >
       <div className="flex flex-col justify-center space-y-5 text-center">
         <PartnersHeaders data={data} />
       </div>
-      <div className="grid grid-cols-2 gap-10 sm:grid-cols-5">
+      <div className="relative left-1/2 right-1/2 -ml-[50vw] grid w-screen grid-cols-2 gap-10 bg-[#F5F7FA] py-16 sm:grid-cols-5">
         {logo.map((client: any) => (
           <PartnersLogo data={client} key={client.id} />
         ))}

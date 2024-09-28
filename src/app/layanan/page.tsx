@@ -1,10 +1,10 @@
-import avatar from "@/assets/Avatar.png";
-import { Button } from "@/components/ui/button";
-import { CircleArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import Image from "next/image";
 import Service from "./Service";
+import Facts from "@/sections/Facts";
+import Partners from "@/sections/Partners";
+import image from "@/assets/services-image.webp";
 const lexend = Lexend({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,11 +29,12 @@ export default async function Page() {
         <div className="absolute z-10 h-screen w-full bg-black/50" />
         <div className="relative h-screen object-fill md:object-cover">
           <Image
-            src={avatar}
+            src={image}
             alt=""
             sizes="100vw"
             width={1440}
             height={810}
+            priority
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 z-20 mx-auto flex max-w-[1440px] flex-col items-center justify-center space-y-5 px-6 text-center md:px-16">
@@ -52,12 +53,14 @@ export default async function Page() {
           </div>
         </div>
       </section>
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-6 pb-10 pt-16 text-[#0D1846] sm:px-16">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-6 pb-10 text-[#0D1846] sm:px-16">
         {/* blog */}
-        {filterData.map((data: any, idx: number) => (
-          <Service key={idx} data={data} reverse={idx % 2 === 1} />
+        {filterData.map((d: any, idx: number) => (
+          <Service key={idx} data={d} />
         ))}
       </div>
+      <Facts />
+      <Partners />
     </main>
   );
 }
