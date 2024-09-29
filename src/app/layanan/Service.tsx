@@ -20,7 +20,7 @@ export default async function Service({ data }: ServiceProps) {
           sizes="100vw"
           width={+data.attributes.cover_image.data[0].attributes.width}
           height={+data.attributes.cover_image.data[0].attributes.height}
-          className="mx-auto aspect-[0.76/1] w-full rounded-2xl sm:aspect-square sm:max-w-[160px]"
+          className="mx-auto aspect-[0.76/1] w-full rounded-2xl object-cover sm:aspect-square sm:max-w-[160px]"
         />
       </div>
       <div className="flex flex-col items-start justify-start space-y-5 sm:w-5/6">
