@@ -39,12 +39,12 @@ export default function Testimony({
             className="-m-10 mx-auto size-96 w-full object-cover"
           />
         </CardHeader>
-        <CardContent className="h-96 max-h-96 space-y-5 overflow-hidden px-8 py-5 sm:h-72">
+        <CardContent className="h-64 max-h-96 space-y-3 overflow-hidden px-8 py-2 sm:h-48">
           <p className="font-semibold">{testimony.attributes.client_company}</p>
           <p>&quot;{testimony.attributes.testimoni}&quot;</p>
         </CardContent>
-        <CardFooter className="start flex space-x-2 px-8">
-          <div>
+        <CardFooter className="flex h-24 space-x-2 px-8">
+          <div className="w-full text-center sm:text-start">
             <h3 className="font-bold">{testimony.attributes.client_name}</h3>
             <p>{testimony.attributes.client_occupation}</p>
           </div>
