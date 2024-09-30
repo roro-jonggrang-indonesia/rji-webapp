@@ -210,7 +210,7 @@ function CommitmentSection() {
           </p>
           <div className="text-start">
             <p>Best Regards,</p>
-            <p className="font-semibold">Joko Pramudi</p>
+            <p className="font-semibold">Joko Pramuji</p>
             <p>Chief of Roro Jonggrang Indonesia</p>
           </div>
         </div>
